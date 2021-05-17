@@ -16,14 +16,14 @@ class EditExcercise extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
     componentDidMount() {
-        axios.get('http://localhost:9000/user/').then(res => {
+        axios.get('https://excercise-tracker-server.herokuapp.com/user/').then(res => {
             const users = res.data.map(data => {
                 return data.username
             })
             this.setState({ user: users })
         })
         console.log(this.props.id)
-        axios.get(`http://localhost:9000/excercise/${this.props.match.params.id}`).then(res => {
+        axios.get(`https://excercise-tracker-server.herokuapp.com/excercise/${this.props.match.params.id}`).then(res => {
             this.setState({
                 username: res.data.username,
                 description: res.data.description,
@@ -44,7 +44,7 @@ class EditExcercise extends Component {
             date: this.state.date,
         }
         console.log(excrecise)
-        axios.patch(`http://localhost:9000/excercise/update/${this.props.match.params.id}`, excrecise).then(res => {
+        axios.patch(`https://excercise-tracker-server.herokuapp.com/excercise/update/${this.props.match.params.id}`, excrecise).then(res => {
             console.log(res.data)
             window.location = "/"
         })

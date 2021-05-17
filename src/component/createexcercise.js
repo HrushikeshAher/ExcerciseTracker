@@ -21,7 +21,7 @@ class CreateExcercise extends Component {
             const users = res.data.map(data => {
                 return data.username
             })
-            this.setState({ user: users})
+            this.setState({ user: users,username:users[0]})
         })
     }
     onChangeHandler = (e) => {

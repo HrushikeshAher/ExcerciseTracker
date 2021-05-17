@@ -24,11 +24,11 @@ class ExcercisesList extends Component {
         }
     }
     componentDidMount() {
-        axios.get(`http://localhost:9000/excercise`).then(res => {
+        axios.get(`https://excercise-tracker-server.herokuapp.com/excercise`).then(res => {
             this.setState({ excercises: res.data })
         }).catch(err => console.log(err))
 
-        axios.get('http://localhost:9000/user/').then(res => {
+        axios.get('https://excercise-tracker-server.herokuapp.com/user/').then(res => {
             const users = res.data.map(data => {
                 return data.username
             })
@@ -37,7 +37,7 @@ class ExcercisesList extends Component {
     }
 
     deleteExcercise = (id) => {
-        axios.delete(`http://localhost:9000/excercise/${id}`).then(res => alert(res.data)).catch(err => console.log(err))
+        axios.delete(`https://excercise-tracker-server.herokuapp.com/excercise/${id}`).then(res => alert(res.data)).catch(err => console.log(err))
         this.setState({ excercises: this.state.excercises.filter((excercise) => id !== excercise._id) })
 
     }

@@ -17,7 +17,7 @@ class CreateExcercise extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
     componentDidMount() {
-        axios.get('http://localhost:9000/user/').then(res => {
+        axios.get('https://excercise-tracker-server.herokuapp.com/user/').then(res => {
             const users = res.data.map(data => {
                 return data.username
             })
@@ -36,7 +36,7 @@ class CreateExcercise extends Component {
             date: this.state.date,
         }
         console.log(excrecise)
-        axios.post('http://localhost:9000/excercise/add', excrecise).then(res => {
+        axios.post('https://excercise-tracker-server.herokuapp.com/excercise/add', excrecise).then(res => {
             console.log(res.data)
             window.location="/" 
         })

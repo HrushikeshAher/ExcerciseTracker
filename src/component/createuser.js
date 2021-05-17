@@ -11,7 +11,7 @@ class CreateUser extends Component {
         }
     }
     componentDidMount() {
-        axios.get('http://localhost:9000/user/').then(res => {
+        axios.get('https://excercise-tracker-server.herokuapp.com/user/').then(res => {
             const userlist = res.data.map(data => {
                 return { username: data.username, createdAT: data.createdAt, id: data._id }
             })
@@ -25,9 +25,9 @@ class CreateUser extends Component {
     onSubmitHandler = (e) => {
         e.preventDefault()
         const user = { username: this.state.username }
-        axios.post('http://localhost:9000/user/add', user).then(res => {
+        axios.post('https://excercise-tracker-server.herokuapp.com/user/add', user).then(res => {
             console.log(res.data)
-            axios.get('http://localhost:9000/user/').then(res => {
+            axios.get('https://excercise-tracker-server.herokuapp.com/user/').then(res => {
                 const userlist = res.data.map(data => {
                     return { username: data.username, createdAT: data.createdAt, id: data._id }
                 })
@@ -37,8 +37,8 @@ class CreateUser extends Component {
         this.setState({ username: '' })
     }
     deleteuser=(id,username)=>{
-        axios.delete(`http://localhost:9000/excercise/delete/${username}`).then(res=>console.log(res.data))
-        axios.delete(`http://localhost:9000/user/delete/${id}`).then(res=>console.log(res.data))
+        axios.delete(`https://excercise-tracker-server.herokuapp.com/excercise/delete/${username}`).then(res=>console.log(res.data))
+        axios.delete(`https://excercise-tracker-server.herokuapp.com/user/delete/${id}`).then(res=>console.log(res.data))
         this.setState({users:this.state.users.filter(data=>data.id!==id)})
 
     }
